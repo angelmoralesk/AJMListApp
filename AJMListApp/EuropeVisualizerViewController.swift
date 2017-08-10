@@ -29,6 +29,22 @@ class EuropeVisualizerViewController: UIViewController {
         adapter.dataSource = self
     }
 
+}
 
+extension EuropeVisualizerViewController : ListAdapterDataSource {
+    
+    // 1
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        return names as [ListDiffable]
+    }
+    
+    // 2
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        return ListSectionController()
+    }
+    
+    // 3
+    func emptyView(for listAdapter: ListAdapter) -> UIView? { return nil }
+    
 }
 
