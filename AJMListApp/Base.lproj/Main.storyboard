@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Europe Visualizer View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AJMListApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EuropeVisualizerViewController" customModule="AJMListApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="width" secondItem="oCT-Uq-6eV" secondAttribute="height" multiplier="125:114" id="IEI-LU-xKJ"/>
                                     <constraint firstAttribute="width" constant="375" id="wTw-gk-7Tz"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uYJ-tO-YNY">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uYJ-tO-YNY">
                                     <size key="itemSize" width="159" height="226"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -37,7 +37,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fQq-ar-5P8">
-                                        <rect key="frame" x="0.0" y="0.0" width="159" height="226"/>
+                                        <rect key="frame" x="0.0" y="58" width="159" height="226"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="159" height="226"/>
@@ -54,6 +54,9 @@
                             <constraint firstItem="oCT-Uq-6eV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="o4M-Yv-VH8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="oCT-Uq-6eV" id="ON2-UD-kgM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
