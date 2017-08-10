@@ -7,17 +7,26 @@
 //
 
 import UIKit
+import IGListKit
 
-class ViewController: UIViewController {
+class EuropeVisualizerViewController: UIViewController {
 
+    var names = ["berlin-cathedral","brandenburg-gate","colosseum", "eiffel", "louvre", "notre-dame", "venice"]
+    var places : [UIImage] = []
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let placesNames = names.map { $0.appending(".jpg") }
+        places = placesNames.flatMap{ name in
+            return UIImage(named: name)
+        }
+        
+        let updater = ListAdapterUpdater()
+        let adapter = ListAdapter(updater: updater, viewController: self, workingRangeSize: 0)
+        adapter.collectionView = collectionView
+        adapter.dataSource = self
     }
 
 
