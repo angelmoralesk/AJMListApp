@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		868F23401CA3CEC87B1B15AD /* Pods_AJMListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0B78A1233F90D7098E5ABC /* Pods_AJMListApp.framework */; };
 		881D922A1F3BFE5D00771389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D92291F3BFE5D00771389 /* AppDelegate.swift */; };
-		881D922C1F3BFE5D00771389 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D922B1F3BFE5D00771389 /* ViewController.swift */; };
+		881D922C1F3BFE5D00771389 /* EuropeVisualizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D922B1F3BFE5D00771389 /* EuropeVisualizerViewController.swift */; };
 		881D922F1F3BFE5D00771389 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881D922D1F3BFE5D00771389 /* Main.storyboard */; };
 		881D92321F3BFE5D00771389 /* AJMListApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 881D92301F3BFE5D00771389 /* AJMListApp.xcdatamodeld */; };
 		881D92341F3BFE5D00771389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 881D92331F3BFE5D00771389 /* Assets.xcassets */; };
@@ -25,7 +25,7 @@
 		4DC2B7C4426C197016160D11 /* Pods-AJMListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AJMListApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AJMListApp/Pods-AJMListApp.debug.xcconfig"; sourceTree = "<group>"; };
 		881D92261F3BFE5D00771389 /* AJMListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AJMListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		881D92291F3BFE5D00771389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		881D922B1F3BFE5D00771389 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		881D922B1F3BFE5D00771389 /* EuropeVisualizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuropeVisualizerViewController.swift; sourceTree = "<group>"; };
 		881D922E1F3BFE5D00771389 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		881D92311F3BFE5D00771389 /* AJMListApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AJMListApp.xcdatamodel; sourceTree = "<group>"; };
 		881D92331F3BFE5D00771389 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 			children = (
 				881D923E1F3C055B00771389 /* Images */,
 				881D92291F3BFE5D00771389 /* AppDelegate.swift */,
-				881D922B1F3BFE5D00771389 /* ViewController.swift */,
+				881D922B1F3BFE5D00771389 /* EuropeVisualizerViewController.swift */,
 				881D922D1F3BFE5D00771389 /* Main.storyboard */,
 				881D92351F3BFE5D00771389 /* LaunchScreen.storyboard */,
 				881D92381F3BFE5D00771389 /* Info.plist */,
@@ -244,7 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				881D92321F3BFE5D00771389 /* AJMListApp.xcdatamodeld in Sources */,
-				881D922C1F3BFE5D00771389 /* ViewController.swift in Sources */,
+				881D922C1F3BFE5D00771389 /* EuropeVisualizerViewController.swift in Sources */,
 				881D922A1F3BFE5D00771389 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
