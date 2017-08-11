@@ -17,6 +17,8 @@
 		881D92421F3C058400771389 /* france.gif in Resources */ = {isa = PBXBuildFile; fileRef = 881D92401F3C058400771389 /* france.gif */; };
 		881D92431F3C058400771389 /* germany.gif in Resources */ = {isa = PBXBuildFile; fileRef = 881D92411F3C058400771389 /* germany.gif */; };
 		881D92451F3C058F00771389 /* italy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 881D92441F3C058F00771389 /* italy.gif */; };
+		88B1BBA31F3D46A40037EC73 /* PlaceListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B1BBA21F3D46A40037EC73 /* PlaceListController.swift */; };
+		88B1BBA51F3D47A60037EC73 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B1BBA41F3D47A60037EC73 /* CountryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		881D92401F3C058400771389 /* france.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = france.gif; sourceTree = "<group>"; };
 		881D92411F3C058400771389 /* germany.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = germany.gif; sourceTree = "<group>"; };
 		881D92441F3C058F00771389 /* italy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = italy.gif; sourceTree = "<group>"; };
+		88B1BBA21F3D46A40037EC73 /* PlaceListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceListController.swift; sourceTree = "<group>"; };
+		88B1BBA41F3D47A60037EC73 /* CountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 				881D92351F3BFE5D00771389 /* LaunchScreen.storyboard */,
 				881D92381F3BFE5D00771389 /* Info.plist */,
 				881D92301F3BFE5D00771389 /* AJMListApp.xcdatamodeld */,
+				88B1BBA21F3D46A40037EC73 /* PlaceListController.swift */,
+				88B1BBA41F3D47A60037EC73 /* CountryCell.swift */,
 			);
 			path = AJMListApp;
 			sourceTree = "<group>";
@@ -245,6 +251,8 @@
 			files = (
 				881D92321F3BFE5D00771389 /* AJMListApp.xcdatamodeld in Sources */,
 				881D922C1F3BFE5D00771389 /* EuropeVisualizerViewController.swift in Sources */,
+				88B1BBA51F3D47A60037EC73 /* CountryCell.swift in Sources */,
+				88B1BBA31F3D46A40037EC73 /* PlaceListController.swift in Sources */,
 				881D922A1F3BFE5D00771389 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
