@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		868F23401CA3CEC87B1B15AD /* Pods_AJMListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0B78A1233F90D7098E5ABC /* Pods_AJMListApp.framework */; };
+		881D2CA51F3FF1BB005DF708 /* AJMLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D2CA41F3FF1BB005DF708 /* AJMLayout.swift */; };
 		881D922A1F3BFE5D00771389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D92291F3BFE5D00771389 /* AppDelegate.swift */; };
 		881D922C1F3BFE5D00771389 /* EuropeVisualizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D922B1F3BFE5D00771389 /* EuropeVisualizerViewController.swift */; };
 		881D922F1F3BFE5D00771389 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881D922D1F3BFE5D00771389 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		2C0B78A1233F90D7098E5ABC /* Pods_AJMListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AJMListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C8C64B08E8BE630D2FC54C /* Pods-AJMListApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AJMListApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-AJMListApp/Pods-AJMListApp.release.xcconfig"; sourceTree = "<group>"; };
 		4DC2B7C4426C197016160D11 /* Pods-AJMListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AJMListApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AJMListApp/Pods-AJMListApp.debug.xcconfig"; sourceTree = "<group>"; };
+		881D2CA41F3FF1BB005DF708 /* AJMLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJMLayout.swift; sourceTree = "<group>"; };
 		881D92261F3BFE5D00771389 /* AJMListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AJMListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		881D92291F3BFE5D00771389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		881D922B1F3BFE5D00771389 /* EuropeVisualizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuropeVisualizerViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				881D92291F3BFE5D00771389 /* AppDelegate.swift */,
 				881D922B1F3BFE5D00771389 /* EuropeVisualizerViewController.swift */,
 				881D922D1F3BFE5D00771389 /* Main.storyboard */,
+				881D2CA41F3FF1BB005DF708 /* AJMLayout.swift */,
 				881D92351F3BFE5D00771389 /* LaunchScreen.storyboard */,
 				881D92381F3BFE5D00771389 /* Info.plist */,
 				881D92301F3BFE5D00771389 /* AJMListApp.xcdatamodeld */,
@@ -251,6 +254,7 @@
 			files = (
 				881D92321F3BFE5D00771389 /* AJMListApp.xcdatamodeld in Sources */,
 				881D922C1F3BFE5D00771389 /* EuropeVisualizerViewController.swift in Sources */,
+				881D2CA51F3FF1BB005DF708 /* AJMLayout.swift in Sources */,
 				88B1BBA51F3D47A60037EC73 /* CountryCell.swift in Sources */,
 				88B1BBA31F3D46A40037EC73 /* PlaceListController.swift in Sources */,
 				881D922A1F3BFE5D00771389 /* AppDelegate.swift in Sources */,
