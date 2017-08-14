@@ -50,10 +50,27 @@ class AJMLayout: UICollectionViewLayout {
                     cache.append(attributes)
                     
                 }
+    func createFirstCellRect() -> CGRect {
+        let xOffset = collectionView!.contentOffset.x<=0 ? 0 : collectionView!.contentOffset.x
+        let yPosition = (collectionView!.bounds.height / 2 ) - (itemSize.height / 2 )
+        let origin = CGPoint(x: xOffset, y: yPosition)
+        return CGRect(origin: origin, size: itemSize)
+    }
+    
+    func createStackedCellRectFrom(_ indexPath : NSIndexPath) -> CGRect {
+        var xOffset : CGFloat = CGFloat(0)
+        if collectionView!.contentOffset.x<=0 {
+            xOffset = xOffsets[indexPath.section]
+        } else  {
+            if collectionView!.contentOffset.x >= (xOffsets[indexPath.section] / 2){
+                xOffset = collectionView!.contentOffset.x
+            } else {
+                xOffset = collectionView!.contentOffset.x - xOffsets[indexPath.section]
             }
-            contentWidth = CGFloat(collectionView!.numberOfSections) * columnWidth
-            
         }
+
+        let origin = CGPoint(x: abs(xOffset), y: yOffsets[indexPath.section])
+        return CGRect(origin: origin, size: itemSize)
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
