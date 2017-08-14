@@ -86,7 +86,7 @@ class AJMLayout: UICollectionViewLayout {
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
-        for attributes in cache {
+        for attributes in attributes {
             if attributes.frame.intersects(rect) {
                 layoutAttributes.append(attributes)
             }
@@ -94,8 +94,16 @@ class AJMLayout: UICollectionViewLayout {
         return layoutAttributes
     }
     
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+
+        return UICollectionViewLayoutAttributes()
+    }
+
+    
     override var collectionViewContentSize: CGSize {
+        let contentWidth = (cellPadding + itemSize.width) * 6
         return CGSize(width: contentWidth, height: contentHeight)
+    
     }
     
 
