@@ -27,8 +27,8 @@ class EuropeVisualizerViewController: UIViewController {
             return UIImage(named: name)
         }*/
         
-        
         adapter.collectionView = collectionView
+        adapter.scrollViewDelegate = self
         adapter.dataSource = self
     }
 
@@ -52,5 +52,17 @@ extension EuropeVisualizerViewController : ListAdapterDataSource {
     // 3
     func emptyView(for listAdapter: ListAdapter) -> UIView? { return nil }
     
+}
+
+extension EuropeVisualizerViewController : UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let collectionView = scrollView as! UICollectionView
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView!.collectionViewLayout.invalidateLayout()
+    }
 }
 
