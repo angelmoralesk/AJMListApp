@@ -10,46 +10,57 @@ import UIKit
 
 class AJMLayout: UICollectionViewLayout {
     
-    private var cache = [UICollectionViewLayoutAttributes]()
+    private var attributes = [UICollectionViewLayoutAttributes]()
+    private let itemSize : CGSize = CGSize(width: 300, height: 300)
     
     private var numberOfColumns = 6
-    private var cellPadding : CGFloat = 5
+    private var cellPadding : CGFloat = 10
     private var contentHeight : CGFloat {
         get {
             let insets = collectionView!.contentInset
             return collectionView!.bounds.height - (insets.bottom + insets.top)
         }
     }
-    private var contentWidth: CGFloat = 0.0
+    var xOffsets = [CGFloat]()
+    var yOffsets = [CGFloat]()
     
     override func prepare() {
-        if cache.isEmpty {
-            let columnWidth = CGFloat(300)
-            
-            var xOffsets = [CGFloat]()
-            for column in 0..<numberOfColumns {
-                xOffsets.append(CGFloat(column) * columnWidth)
-            }
-            
-            var yOffsets = [CGFloat](repeating: 200, count: numberOfColumns)
-            var zIndex = 0
-            for section in 0..<collectionView!.numberOfSections {
-                for item in 0..<collectionView!.numberOfItems(inSection: section) {
-                    
-                    let indexPath = NSIndexPath(item: item, section: section)
-                    let width = columnWidth - (cellPadding * 2)
-                    let height = 300 - (cellPadding * 2)
-                    
-                    let frame = CGRect(x: xOffsets[section], y: yOffsets[item], width: width, height: height)
-                    let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-                    let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath as IndexPath)
-                    attributes.frame = insetFrame
-                    attributes.transform3D = CATransform3DMakeScale(1.0, 1.0, 1.0)
-                    attributes.zIndex = zIndex
-                    zIndex += 1
-                    cache.append(attributes)
-                    
+    
+         xOffsets = [CGFloat]()
+        
+        for column in 0..<numberOfColumns {
+            xOffsets.append(cellPadding + (CGFloat(column) * itemSize.width))
+        }
+        let yPosition = (collectionView!.bounds.height / 2 ) - (itemSize.height / 2 )
+        
+        yOffsets = [CGFloat](repeating: yPosition, count: numberOfColumns)
+        var zIndex = 0
+        for section in 0..<collectionView!.numberOfSections {
+            for item in 0..<collectionView!.numberOfItems(inSection: section) {
+                let indexPath = NSIndexPath(item: item, section: section)
+
+                let isFirstCellInCollection = indexPath.section == 0 && indexPath.row == 0
+                var frame : CGRect?
+                if isFirstCellInCollection {
+                    frame = createFirstCellRect()
+                } else {
+                    //frame = CGRect(x: xOffsets[section], y: yOffsets[item], width: itemSize.width, height: itemSize.height)
+                    frame = createStackedCellRectFrom(indexPath)
                 }
+                print("\(section) -\(frame)")
+                let insetFrame = frame!.insetBy(dx: cellPadding, dy: cellPadding)
+                let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath as IndexPath)
+                attr.frame = insetFrame
+                attr.transform3D = CATransform3DMakeScale(1.0, 1.0, 1.0)
+                attr.zIndex = zIndex
+                zIndex += 1
+                attributes.append(attr)
+                
+            }
+        }
+        
+    }
+    
     func createFirstCellRect() -> CGRect {
         let xOffset = collectionView!.contentOffset.x<=0 ? 0 : collectionView!.contentOffset.x
         let yPosition = (collectionView!.bounds.height / 2 ) - (itemSize.height / 2 )
