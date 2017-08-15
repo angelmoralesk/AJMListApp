@@ -10,7 +10,7 @@ import UIKit
 
 class AJMLayout: UICollectionViewLayout {
     
-    private var attributes = [UICollectionViewLayoutAttributes]()
+    private var attributes = [NSIndexPath : UICollectionViewLayoutAttributes]()
     private let itemSize : CGSize = CGSize(width: 300, height: 300)
     
     private var numberOfColumns = 6
@@ -54,7 +54,7 @@ class AJMLayout: UICollectionViewLayout {
                 attr.transform3D = CATransform3DMakeScale(1.0, 1.0, 1.0)
                 attr.zIndex = zIndex
                 zIndex += 1
-                attributes.append(attr)
+                attributes.updateValue(attr, forKey: indexPath)
                 
             }
         }
@@ -86,16 +86,19 @@ class AJMLayout: UICollectionViewLayout {
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
-        for attributes in attributes {
-            if attributes.frame.intersects(rect) {
-                layoutAttributes.append(attributes)
+        for (_, value) in attributes {
+            if value.frame.intersects(rect) {
+                layoutAttributes.append(value)
             }
+            
         }
         return layoutAttributes
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-
+        if let value = attributes[indexPath as NSIndexPath] {
+            return value
+        }
         return UICollectionViewLayoutAttributes()
     }
 
