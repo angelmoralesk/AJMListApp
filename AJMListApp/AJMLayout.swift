@@ -23,7 +23,9 @@ class AJMLayout: UICollectionViewLayout {
     }
     var xOffsets = [CGFloat]()
     var yOffsets = [CGFloat]()
+    var shrinkParam = CGFloat(10)
     
+    //MARK:- UICollectionViewLayout functions
     override func prepare() {
     
          xOffsets = [CGFloat]()
@@ -42,14 +44,13 @@ class AJMLayout: UICollectionViewLayout {
                 let isFirstCellInCollection = indexPath.section == 0 && indexPath.row == 0
                 var frame : CGRect?
                 if isFirstCellInCollection {
-                    frame = createFirstCellRect()
+                    frame = createFirstShrinkableCellRect()
                 } else {
-                    //frame = CGRect(x: xOffsets[section], y: yOffsets[item], width: itemSize.width, height: itemSize.height)
                     frame = createStackedCellRectFrom(indexPath)
                 }
-                print("\(section) -\(frame)")
                 let insetFrame = frame!.insetBy(dx: cellPadding, dy: cellPadding)
                 let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath as IndexPath)
+                
                 attr.frame = insetFrame
                 attr.transform3D = CATransform3DMakeScale(1.0, 1.0, 1.0)
                 attr.zIndex = zIndex
@@ -59,82 +60,6 @@ class AJMLayout: UICollectionViewLayout {
             }
         }
         
-    }
-    
-    func createFirstCellRect() -> CGRect {
-        let xOffset = collectionView!.contentOffset.x<=0 ? 0 : collectionView!.contentOffset.x
-        let yPosition = (collectionView!.bounds.height / 2 ) - (itemSize.height / 2 )
-        let origin = CGPoint(x: xOffset, y: yPosition)
-        var progress = CGFloat(0)
-
-        
-        var size = itemSize
-        
-        if collectionView!.contentOffset.x>0 {
-            
-            if collectionView!.contentOffset.x >= (xOffsets[0] / 2){
-                
-                progress = abs(collectionView!.contentOffset.x) / itemSize.width
-                if (progress >= 4.0) {
-                    progress = 4.0
-                }
-                
-                size = CGSize(width: itemSize.width - (shrinkParam * progress), height: itemSize.height - (shrinkParam * progress))
-                
-            } else {
-                
-                progress = abs(collectionView!.contentOffset.x) / itemSize.width
-                if (progress >= 4.0) {
-                    progress = 4.0
-                }
-                size = CGSize(width: itemSize.width - (shrinkParam * progress), height: itemSize.height - (shrinkParam * progress))
-            }
-        }
-
-        
-        
-        return CGRect(origin: origin, size: size)
-    }
-    
-    func createStackedCellRectFrom(_ indexPath : NSIndexPath) -> CGRect {
-        
-        var xOffset = CGFloat(0)
-        var progress = CGFloat(0)
-
-        var yOffset = yOffsets[indexPath.section]
-        var size = itemSize
-        
-        if collectionView!.contentOffset.x<=0 {
-            xOffset = xOffsets[indexPath.section]
-            yOffset = yOffsets[indexPath.section]
-        } else  {
-            if collectionView!.contentOffset.x >= (xOffsets[indexPath.section] / 2){
-                xOffset = collectionView!.contentOffset.x
-                
-                progress = abs(collectionView!.contentOffset.x) / itemSize.width
-                if (progress >= 4.0) {
-                    progress = 4.0
-                }
-                
-                size = CGSize(width: itemSize.width - (shrinkParam * progress), height: itemSize.height - (shrinkParam * progress))
-                
-                xOffset = collectionView!.contentOffset.x + (progress * CGFloat(indexPath.section))
-
-                
-            } else {
-                xOffset = collectionView!.contentOffset.x - xOffsets[indexPath.section]
-                progress = abs(collectionView!.contentOffset.x) / itemSize.width
-                if (progress >= 4.0) {
-                    progress = 4.0
-                }
-                size = CGSize(width: itemSize.width - (shrinkParam * progress), height: itemSize.height - (shrinkParam * progress))
-
-              
-            }
-        }
-        print("La sección es \(indexPath.section) contentOffset \(collectionView!.contentOffset.x) size \(size) & progress \(progress)")
-        let origin = CGPoint(x: abs(xOffset), y: yOffset)
-        return CGRect(origin: origin, size: size)
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -162,5 +87,108 @@ class AJMLayout: UICollectionViewLayout {
     
     }
     
+    //MARK:- Regular cells
+    
+    func createFirstCellRect() -> CGRect {
+        let xOffset = collectionView!.contentOffset.x<=0 ? 0 : collectionView!.contentOffset.x
+        let yPosition = (collectionView!.bounds.height / 2 ) - (itemSize.height / 2 )
+        let origin = CGPoint(x: xOffset, y: yPosition)
+        return CGRect(origin: origin, size: itemSize)
+    }
+    
+    func createStackedCellRectFrom(_ indexPath : NSIndexPath) -> CGRect {
+        var xOffset : CGFloat = CGFloat(0)
+        if collectionView!.contentOffset.x<=0 {
+            xOffset = xOffsets[indexPath.section]
+        } else  {
+            if collectionView!.contentOffset.x >= (xOffsets[indexPath.section] / 2){
+                xOffset = collectionView!.contentOffset.x
+            } else {
+                xOffset = collectionView!.contentOffset.x - xOffsets[indexPath.section]
+            }
+        }
+        
+        let origin = CGPoint(x: abs(xOffset), y: yOffsets[indexPath.section])
+        return CGRect(origin: origin, size: itemSize)
+    }
+    
+    //MARK:- Shrinkable cells
+    
+    func createFirstShrinkableCellRect() -> CGRect {
+        let xOffset = collectionView!.contentOffset.x<=0 ? 0 : collectionView!.contentOffset.x
+        let yPosition = (collectionView!.bounds.height / 2 ) - (itemSize.height / 2 )
+        let origin = CGPoint(x: xOffset, y: yPosition)
+        var progress = CGFloat(0)
+        
+        
+        var size = itemSize
+        
+        if collectionView!.contentOffset.x>0 {
+            
+            if collectionView!.contentOffset.x >= (xOffsets[0] / 2){
+                
+                progress = abs(collectionView!.contentOffset.x) / itemSize.width
+                if (progress >= 4.0) {
+                    progress = 4.0
+                }
+                
+                size = CGSize(width: itemSize.width - (shrinkParam * progress), height: itemSize.height - (shrinkParam * progress))
+                
+            } else {
+                
+                progress = abs(collectionView!.contentOffset.x) / itemSize.width
+                if (progress >= 4.0) {
+                    progress = 4.0
+                }
+                size = CGSize(width: itemSize.width - (shrinkParam * progress), height: itemSize.height - (shrinkParam * progress))
+            }
+        }
+        
+        return CGRect(origin: origin, size: size)
+    }
+    
+    func createShrinkableStackedCellRectFrom(_ indexPath : NSIndexPath) -> CGRect {
+        
+        var xOffset = CGFloat(0)
+        var progress = CGFloat(0)
+        
+        var yOffset = yOffsets[indexPath.section]
+        var size = itemSize
+        
+        if collectionView!.contentOffset.x<=0 {
+            xOffset = xOffsets[indexPath.section]
+            yOffset = yOffsets[indexPath.section]
+        } else  {
+            if collectionView!.contentOffset.x >= (xOffsets[indexPath.section] / 2){
+                xOffset = collectionView!.contentOffset.x
+                
+                progress = abs(collectionView!.contentOffset.x) / itemSize.width
+                if (progress >= 4.0) {
+                    progress = 4.0
+                }
+                
+                size = CGSize(width: itemSize.width - (shrinkParam * progress), height: itemSize.height - (shrinkParam * progress))
+                
+                xOffset = collectionView!.contentOffset.x + (progress * CGFloat(indexPath.section))
+                
+                
+            } else {
+                xOffset = collectionView!.contentOffset.x - xOffsets[indexPath.section]
+                progress = abs(collectionView!.contentOffset.x) / itemSize.width
+                if (progress >= 4.0) {
+                    progress = 4.0
+                }
+                size = CGSize(width: itemSize.width - (shrinkParam * progress), height: itemSize.height - (shrinkParam * progress))
+                
+                
+            }
+        }
+        print("La sección es \(indexPath.section) contentOffset \(collectionView!.contentOffset.x) size \(size) & progress \(progress)")
+        let origin = CGPoint(x: abs(xOffset), y: yOffset)
+        return CGRect(origin: origin, size: size)
+    }
+    
+    
+
 
 }
