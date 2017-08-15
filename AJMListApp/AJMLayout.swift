@@ -32,6 +32,7 @@ class AJMLayout: UICollectionViewLayout {
         
         for column in 0..<numberOfColumns {
             xOffsets.append(cellPadding + (CGFloat(column) * itemSize.width))
+            print("offset x \(column) - \(xOffsets[column])")
         }
         let yPosition = (collectionView!.bounds.height / 2 ) - (itemSize.height / 2 )
         
@@ -44,7 +45,7 @@ class AJMLayout: UICollectionViewLayout {
                 let isFirstCellInCollection = indexPath.section == 0 && indexPath.row == 0
                 var frame : CGRect?
                 if isFirstCellInCollection {
-                    frame = createFirstShrinkableCellRect()
+                    frame = createFirstCellRect()
                 } else {
                     frame = createStackedCellRectFrom(indexPath)
                 }
@@ -52,11 +53,12 @@ class AJMLayout: UICollectionViewLayout {
                 let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath as IndexPath)
                 
                 attr.frame = insetFrame
-                attr.transform3D = CATransform3DMakeScale(1.0, 1.0, 1.0)
+                make3DStackedCellUsing(attributes: attr, fromIndexPath: indexPath as IndexPath)
+                //attr.transform3D = CATransform3DMakeScale(1.0, 1.0, 1.0)
                 attr.zIndex = zIndex
                 zIndex += 1
                 attributes.updateValue(attr, forKey: indexPath)
-                
+                print("\(indexPath.section) -frame \(insetFrame) contentOffset \(collectionView?.contentOffset.x)")
             }
         }
         
@@ -188,7 +190,24 @@ class AJMLayout: UICollectionViewLayout {
         return CGRect(origin: origin, size: size)
     }
     
+    //MARK:- Utility functions
     
+    func make3DStackedCellUsing(attributes : UICollectionViewLayoutAttributes, fromIndexPath indexPath : IndexPath) {
+        
+        var progress = CGFloat(0)
+    
+        progress = abs(2 * collectionView!.contentOffset.x) /  abs(xOffsets[indexPath.section]) //- (attributes.frame.origin.x + itemSize.width + cellPadding))
+        if (progress >= 1.0) {
+            progress = 1.0
+        }
+        
+        var transform = CATransform3DIdentity
+        transform.m34 = -1.0 / 500.0
+        transform = CATransform3DRotate(transform, CGFloat(M_PI_4) * progress, 0, 1, 0)
+        attributes.transform3D = transform
+        
+        
+    }
 
 
 }
