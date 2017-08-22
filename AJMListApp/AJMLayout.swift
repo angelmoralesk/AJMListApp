@@ -56,7 +56,7 @@ class AJMLayout: UICollectionViewLayout {
                 make3DStackedCellUsing(attributes: attr, fromIndexPath: indexPath as IndexPath)
                 //attr.transform3D = CATransform3DMakeScale(1.0, 1.0, 1.0)
                 attr.zIndex = zIndex
-                zIndex += 1
+                zIndex = 1000 * indexPath.section
                 attributes.updateValue(attr, forKey: indexPath)
                 print("\(indexPath.section) -frame \(insetFrame) contentOffset \(collectionView?.contentOffset.x)")
             }
@@ -204,6 +204,9 @@ class AJMLayout: UICollectionViewLayout {
         var transform = CATransform3DIdentity
         transform.m34 = -1.0 / 500.0
         transform = CATransform3DRotate(transform, CGFloat(M_PI_4) * progress, 0, 1, 0)
+        if indexPath.section != 0 {
+            attributes.alpha = attributes.alpha*progress
+        }
         attributes.transform3D = transform
         
         
