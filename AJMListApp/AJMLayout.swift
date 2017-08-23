@@ -14,7 +14,7 @@ class AJMLayout: UICollectionViewLayout {
     private let itemSize : CGSize = CGSize(width: 300, height: 300)
     
     private var numberOfColumns = 6
-    private var cellPadding : CGFloat = 10
+    private var cellPadding : CGFloat = 20
     private var contentHeight : CGFloat {
         get {
             let insets = collectionView!.contentInset
@@ -28,6 +28,8 @@ class AJMLayout: UICollectionViewLayout {
     //MARK:- UICollectionViewLayout functions
     override func prepare() {
     
+        collectionView!.decelerationRate = UIScrollViewDecelerationRateNormal
+
          xOffsets = [CGFloat]()
         
         for column in 0..<numberOfColumns {
@@ -82,7 +84,29 @@ class AJMLayout: UICollectionViewLayout {
         return UICollectionViewLayoutAttributes()
     }
 
-    
+  
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        var newOffset = CGPoint()
+        
+        var layout = collectionView!.collectionViewLayout as! AJMLayout
+        var width = layout.itemSize.width + layout.cellPadding
+        
+        var offset = proposedContentOffset.x + collectionView!.contentInset.left
+        
+        if velocity.x > 0 {
+            offset = width * ceil(offset / width)
+        } else if velocity.x == 0 {
+            offset = width * round(offset / width)
+        } else if velocity.x < 0 {
+            offset = width * floor(offset / width)
+        }
+        
+        newOffset.x = offset - collectionView!.contentInset.left
+        newOffset.y = proposedContentOffset.y
+        
+        return newOffset
+        
+    }
     override var collectionViewContentSize: CGSize {
         let contentWidth = (cellPadding + itemSize.width) * 6
         return CGSize(width: contentWidth, height: contentHeight)
