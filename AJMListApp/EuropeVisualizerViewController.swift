@@ -18,11 +18,14 @@ class EuropeVisualizerViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
-    var currentCountry : Country = CountryFactory.countryByIndex(index: 0)
     
     lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
+
+    var page: CGFloat = 0
+
+    var startingScrollingOffset = CGPoint.zero
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +34,7 @@ class EuropeVisualizerViewController: UIViewController {
         adapter.collectionView = collectionView
         adapter.scrollViewDelegate = self
         adapter.dataSource = self
-        
-        if let layout = collectionView.collectionViewLayout as? AJMFlowLayout {
-            layout.delegate = self
-        }
-        
+
     }
 
 }
