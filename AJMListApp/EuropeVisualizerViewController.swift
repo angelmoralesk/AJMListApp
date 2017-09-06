@@ -23,13 +23,11 @@ class EuropeVisualizerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         names = names.map { $0.appending(".jpg") }
-        /*places = placesNames.flatMap{ name in
-            return UIImage(named: name)
-        }*/
         
         adapter.collectionView = collectionView
         adapter.scrollViewDelegate = self
         adapter.dataSource = self
+        
     }
 
 }
@@ -64,5 +62,8 @@ extension EuropeVisualizerViewController : UIScrollViewDelegate {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView!.collectionViewLayout.invalidateLayout()
     }
+    
+    
 }
+
 
