@@ -16,6 +16,9 @@ class EuropeVisualizerViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
     lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
@@ -27,6 +30,10 @@ class EuropeVisualizerViewController: UIViewController {
         adapter.collectionView = collectionView
         adapter.scrollViewDelegate = self
         adapter.dataSource = self
+        
+        if let layout = collectionView.collectionViewLayout as? AJMFlowLayout {
+            layout.delegate = self
+        }
         
     }
 
@@ -66,4 +73,13 @@ extension EuropeVisualizerViewController : UIScrollViewDelegate {
     
 }
 
+extension EuropeVisualizerViewController : AJMFlowLayoutDelegate {
+    
+    func ajmFlowLayout(sender: AJMFlowLayout, didChooseIndex index: Int) {
+        let country = CountryFactory.countryByIndex(index: index)
+        titleLabel.text = country.name
+        descriptionTextView.text = country.description
+        
+    }
+}
 
