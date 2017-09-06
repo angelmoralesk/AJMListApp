@@ -18,8 +18,6 @@ class AJMFlowLayout: UICollectionViewFlowLayout {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         itemSize = CGSize(width: 300, height: 300)
-        
-
     }
     
     override func prepare() {
@@ -27,15 +25,21 @@ class AJMFlowLayout: UICollectionViewFlowLayout {
         
         scrollDirection = .horizontal
         collectionView?.decelerationRate = UIScrollViewDecelerationRateNormal
-     
+
     }
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         var newOffset = CGPoint()
         
         let layout = collectionView!.collectionViewLayout as! AJMFlowLayout
-        let width = itemSize.width + layout.minimumLineSpacing
         
+        let firstItemPosX = layoutAttributesForItem(at: IndexPath(item: 0, section: 0))!.frame.origin.x
+        let secondItemPosX = layoutAttributesForItem(at: IndexPath(item: 0, section: 1))!.frame.origin.x
+        
+        let spacing = secondItemPosX - firstItemPosX - itemSize.width
+
+        let width = itemSize.width + spacing
+        print("\(spacing)")
         var offset = proposedContentOffset.x
         print("Imprimiendo \(velocity) \(width) - \(offset)")
 
@@ -79,7 +83,7 @@ class AJMFlowLayout: UICollectionViewFlowLayout {
             transform.m34 = -1.0 / 500.0
             transform = CATransform3DRotate(transform, CGFloat(M_PI_4) * percent, 0, 1, 0)
             if attribute.indexPath.section != 0 {
-                if percent >= 0.7 {
+                if percent >= 0.5 {
                     attribute.alpha = 1
                 } else {
                     attribute.alpha = attribute.alpha*percent
@@ -87,10 +91,13 @@ class AJMFlowLayout: UICollectionViewFlowLayout {
                 
             }
             
+            print("layoutAttributesForElements \(attribute.indexPath.section)frame  \(attribute.frame) - \(percent) %")
+
             attribute.transform3D = transform
             
             layoutAttributes.append(attribute)
         }
+ 
         return layoutAttributes
         
     }
