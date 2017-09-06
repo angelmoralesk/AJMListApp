@@ -67,21 +67,48 @@ extension EuropeVisualizerViewController : UIScrollViewDelegate {
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        startingScrollingOffset = scrollView.contentOffset // 1
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        //source : https://rolandleth.com/uicollectionview-snap-scrolling-and-pagination
+        let offset = scrollView.contentOffset.x + scrollView.contentInset.left // 2
+        
+        let collectionView = scrollView as! UICollectionView
+        let layout = collectionView.collectionViewLayout as? AJMFlowLayout
+        let cellWidth = layout!.itemSize.width
+        let proposedPage = offset / max(1, cellWidth)
+        let snapPoint: CGFloat = 0.1
+        let snapDelta: CGFloat = offset > startingScrollingOffset.x ? (1 - snapPoint) : snapPoint
+        
+        if floor(proposedPage + snapDelta) == floor(proposedPage) { // 3
+            page = floor(proposedPage) // 4
+        }
+        else {
+            page = floor(proposedPage + 1) // 5
+        }
+        
+        targetContentOffset.pointee = CGPoint(
+            x: cellWidth * page,
+            y: targetContentOffset.pointee.y
+        )
+        
+        // BEFORE let index = (cellWidth * page) / 368
+        let index = (cellWidth * page) / layout!.allAttributes[IndexPath(row: 0, section:1)]!.frame.origin.x
+        let country = CountryFactory.countryByIndex(index: Int(index))
+        titleLabel.text = country.name
+        descriptionTextView.text = country.description
+
+    }
+    
+  
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView!.collectionViewLayout.invalidateLayout()
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        titleLabel.text = currentCountry.name
-        descriptionTextView.text = currentCountry.description
-    }
+  
 }
 
-extension EuropeVisualizerViewController : AJMFlowLayoutDelegate {
-    
-    func ajmFlowLayout(sender: AJMFlowLayout, didChooseIndex index: Int) {
-        let country = CountryFactory.countryByIndex(index: index)
-        currentCountry = country
-    }
-}
+
 
