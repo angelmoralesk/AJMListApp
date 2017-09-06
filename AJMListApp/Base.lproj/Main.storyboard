@@ -52,16 +52,43 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bM-Mz-it9">
-                                <rect key="frame" x="333.5" y="0.0" width="333.5" height="375"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="300" y="0.0" width="367" height="375"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Berlin Cathedral" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neF-3A-6WD">
+                                        <rect key="frame" x="14" y="27" width="339.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h3j-HK-nzS">
+                                        <rect key="frame" x="14" y="65" width="340" height="261"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="261" id="8uX-Ff-YHc"/>
+                                        </constraints>
+                                        <mutableString key="text">Berlin Cathedral (German: Berliner Dom) is the short name for the Evangelical Supreme Parish and Collegiate Church (German: Oberpfarr- und Domkirche zu Berlin) in Berlin, Germany. It is located on Museum Island in the Mitte borough. The current building was finished in 1905 and is a main work of Historicist architecture of the "Kaiserzeit".The Dom is the parish church of the congregation Gemeinde der Oberpfarr- und Domkirche zu Berlin, a member of the umbrella organisation Evangelical Church of Berlin-Brandenburg-Silesian Upper Lusatia. The Berlin Cathedral has never been a cathedral in the actual sense of that term since it has never been the seat of a bishop. The bishop of the Evangelical Church in Berlin-Brandenburg (under this name 1945–2003) is based at St. Mary's Church and Kaiser Wilhelm Memorial Church in Berlin.</mutableString>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="neF-3A-6WD" firstAttribute="leading" secondItem="0bM-Mz-it9" secondAttribute="leading" constant="14" id="IiN-ov-0q8"/>
+                                    <constraint firstItem="h3j-HK-nzS" firstAttribute="leading" secondItem="neF-3A-6WD" secondAttribute="leading" id="Lup-oY-Xxc"/>
+                                    <constraint firstItem="h3j-HK-nzS" firstAttribute="top" secondItem="neF-3A-6WD" secondAttribute="bottom" constant="17.5" id="fxp-l0-K5e"/>
+                                    <constraint firstItem="neF-3A-6WD" firstAttribute="top" secondItem="0bM-Mz-it9" secondAttribute="top" constant="27" id="guZ-ZZ-SGO"/>
+                                    <constraint firstAttribute="trailing" secondItem="neF-3A-6WD" secondAttribute="trailing" constant="13.5" id="lST-iO-Bil"/>
+                                    <constraint firstItem="h3j-HK-nzS" firstAttribute="trailing" secondItem="neF-3A-6WD" secondAttribute="trailing" id="px8-gd-FEQ"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="oCT-Uq-6eV" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="3rS-Rt-wC6"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oCT-Uq-6eV" secondAttribute="bottom" id="DoQ-sZ-bcd"/>
                             <constraint firstItem="oCT-Uq-6eV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FA0-cq-DMg"/>
-                            <constraint firstItem="0bM-Mz-it9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="RJP-wa-ckg"/>
+                            <constraint firstItem="0bM-Mz-it9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.55" id="RJP-wa-ckg"/>
                             <constraint firstItem="oCT-Uq-6eV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SAJ-MG-ura"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0bM-Mz-it9" secondAttribute="bottom" id="dgl-Fl-qrB"/>
                             <constraint firstItem="0bM-Mz-it9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="fBj-W3-qyU"/>
@@ -70,6 +97,8 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="oCT-Uq-6eV" id="46p-Nr-1t5"/>
+                        <outlet property="descriptionTextView" destination="h3j-HK-nzS" id="C2F-Gx-sbd"/>
+                        <outlet property="titleLabel" destination="neF-3A-6WD" id="Dro-G5-LhA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
