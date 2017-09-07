@@ -19,6 +19,8 @@
 		881D92421F3C058400771389 /* france.gif in Resources */ = {isa = PBXBuildFile; fileRef = 881D92401F3C058400771389 /* france.gif */; };
 		881D92431F3C058400771389 /* germany.gif in Resources */ = {isa = PBXBuildFile; fileRef = 881D92411F3C058400771389 /* germany.gif */; };
 		881D92451F3C058F00771389 /* italy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 881D92441F3C058F00771389 /* italy.gif */; };
+		88767A891F61D71A002349AA /* CircularEuropeVisualizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88767A881F61D71A002349AA /* CircularEuropeVisualizerViewController.swift */; };
+		88767A8B1F61DC89002349AA /* AJMCircularLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88767A8A1F61DC89002349AA /* AJMCircularLayout.swift */; };
 		88B1BBA31F3D46A40037EC73 /* PlaceListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B1BBA21F3D46A40037EC73 /* PlaceListController.swift */; };
 		88B1BBA51F3D47A60037EC73 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B1BBA41F3D47A60037EC73 /* CountryCell.swift */; };
 		88F59B0D1F60687A000D72AE /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F59B0C1F60687A000D72AE /* Country.swift */; };
@@ -41,6 +43,8 @@
 		881D92401F3C058400771389 /* france.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = france.gif; sourceTree = "<group>"; };
 		881D92411F3C058400771389 /* germany.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = germany.gif; sourceTree = "<group>"; };
 		881D92441F3C058F00771389 /* italy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = italy.gif; sourceTree = "<group>"; };
+		88767A881F61D71A002349AA /* CircularEuropeVisualizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularEuropeVisualizerViewController.swift; sourceTree = "<group>"; };
+		88767A8A1F61DC89002349AA /* AJMCircularLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJMCircularLayout.swift; sourceTree = "<group>"; };
 		88B1BBA21F3D46A40037EC73 /* PlaceListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceListController.swift; sourceTree = "<group>"; };
 		88B1BBA41F3D47A60037EC73 /* CountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		88F59B0C1F60687A000D72AE /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				8838C9FF1F6062B100A67C93 /* Layouts */,
 				881D92291F3BFE5D00771389 /* AppDelegate.swift */,
 				881D922B1F3BFE5D00771389 /* EuropeVisualizerViewController.swift */,
+				88767A881F61D71A002349AA /* CircularEuropeVisualizerViewController.swift */,
 				881D922D1F3BFE5D00771389 /* Main.storyboard */,
 				881D92351F3BFE5D00771389 /* LaunchScreen.storyboard */,
 				881D92381F3BFE5D00771389 /* Info.plist */,
@@ -135,6 +140,7 @@
 			children = (
 				8817DA2C1F5F15A600962959 /* AJMFlowLayout.swift */,
 				881D2CA41F3FF1BB005DF708 /* AJMLayout.swift */,
+				88767A8A1F61DC89002349AA /* AJMCircularLayout.swift */,
 			);
 			name = Layouts;
 			sourceTree = "<group>";
@@ -269,9 +275,11 @@
 				881D92321F3BFE5D00771389 /* AJMListApp.xcdatamodeld in Sources */,
 				881D922C1F3BFE5D00771389 /* EuropeVisualizerViewController.swift in Sources */,
 				881D2CA51F3FF1BB005DF708 /* AJMLayout.swift in Sources */,
+				88767A8B1F61DC89002349AA /* AJMCircularLayout.swift in Sources */,
 				88B1BBA51F3D47A60037EC73 /* CountryCell.swift in Sources */,
 				88F59B0D1F60687A000D72AE /* Country.swift in Sources */,
 				88B1BBA31F3D46A40037EC73 /* PlaceListController.swift in Sources */,
+				88767A891F61D71A002349AA /* CircularEuropeVisualizerViewController.swift in Sources */,
 				881D922A1F3BFE5D00771389 /* AppDelegate.swift in Sources */,
 				8817DA2D1F5F15A600962959 /* AJMFlowLayout.swift in Sources */,
 			);
