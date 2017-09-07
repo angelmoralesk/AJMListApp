@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RR1-gy-FNR">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -66,7 +66,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="261" id="8uX-Ff-YHc"/>
                                         </constraints>
-                                        <mutableString key="text">Berlin Cathedral (German: Berliner Dom) is the short name for the Evangelical Supreme Parish and Collegiate Church (German: Oberpfarr- und Domkirche zu Berlin) in Berlin, Germany. It is located on Museum Island in the Mitte borough. The current building was finished in 1905 and is a main work of Historicist architecture of the "Kaiserzeit".The Dom is the parish church of the congregation Gemeinde der Oberpfarr- und Domkirche zu Berlin, a member of the umbrella organisation Evangelical Church of Berlin-Brandenburg-Silesian Upper Lusatia. The Berlin Cathedral has never been a cathedral in the actual sense of that term since it has never been the seat of a bishop. The bishop of the Evangelical Church in Berlin-Brandenburg (under this name 1945–2003) is based at St. Mary's Church and Kaiser Wilhelm Memorial Church in Berlin.</mutableString>
+                                        <string key="text">Berlin Cathedral (German: Berliner Dom) is the short name for the Evangelical Supreme Parish and Collegiate Church (German: Oberpfarr- und Domkirche zu Berlin) in Berlin, Germany. It is located on Museum Island in the Mitte borough. The current building was finished in 1905 and is a main work of Historicist architecture of the "Kaiserzeit".
+
+The Dom is the parish church of the congregation Gemeinde der Oberpfarr- und Domkirche zu Berlin, a member of the umbrella organisation Evangelical Church of Berlin-Brandenburg-Silesian Upper Lusatia. The Berlin Cathedral has never been a cathedral in the actual sense of that term since it has never been the seat of a bishop. The bishop of the Evangelical Church in Berlin-Brandenburg (under this name 1945–2003) is based at St. Mary's Church and Kaiser Wilhelm Memorial Church in Berlin.</string>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -104,6 +106,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="56.221889055472268" y="36"/>
+        </scene>
+        <!--Circular Europe Visualizer View Controller-->
+        <scene sceneID="lcl-vS-Z1o">
+            <objects>
+                <viewController id="RR1-gy-FNR" customClass="CircularEuropeVisualizerViewController" customModule="AJMListApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zdf-4E-BiL"/>
+                        <viewControllerLayoutGuide type="bottom" id="y2R-ou-xOm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uyu-rV-cza">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="En5-7S-LLW">
+                                <rect key="frame" x="0.0" y="0.0" width="328" height="375"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <collectionViewLayout key="collectionViewLayout" id="q5f-IZ-3J2" customClass="AJMCircularLayout" customModule="AJMListApp" customModuleProvider="target"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="W28-YJ-eiE" customClass="CountryCell" customModule="AJMListApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pXC-so-dLW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="pXC-so-dLW" firstAttribute="leading" secondItem="W28-YJ-eiE" secondAttribute="leading" id="Oh9-yc-ieu"/>
+                                            <constraint firstAttribute="trailing" secondItem="pXC-so-dLW" secondAttribute="trailing" id="cAc-SJ-L9D"/>
+                                            <constraint firstAttribute="bottom" secondItem="pXC-so-dLW" secondAttribute="bottom" id="nuy-2l-50n"/>
+                                            <constraint firstItem="pXC-so-dLW" firstAttribute="top" secondItem="W28-YJ-eiE" secondAttribute="top" id="sqB-pt-UE9"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="pXC-so-dLW" id="70d-e1-pkl"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="RR1-gy-FNR" id="hQk-ZD-PBl"/>
+                                    <outlet property="delegate" destination="RR1-gy-FNR" id="JNm-kj-O3a"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="En5-7S-LLW" secondAttribute="trailing" constant="339" id="CTl-pR-R3O"/>
+                            <constraint firstItem="En5-7S-LLW" firstAttribute="leading" secondItem="Uyu-rV-cza" secondAttribute="leading" id="DTO-k9-aVN"/>
+                            <constraint firstItem="En5-7S-LLW" firstAttribute="top" secondItem="Uyu-rV-cza" secondAttribute="top" id="uNu-Qo-abH"/>
+                            <constraint firstItem="y2R-ou-xOm" firstAttribute="top" secondItem="En5-7S-LLW" secondAttribute="bottom" id="y7J-oT-jaq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="En5-7S-LLW" id="7ss-5V-a8O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rQB-YA-Tt5" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="55.322338830584712" y="749.60000000000002"/>
         </scene>
     </scenes>
 </document>
